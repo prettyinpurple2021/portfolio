@@ -29,7 +29,7 @@ export default function AboutPage() {
         >
           <GlassCard className="p-6 hover:shadow-holographic transition-all duration-300">
             <p className="text-gray-600 leading-relaxed">
-              I'm a solo founder building SoloSuccess AI — a command center of 8 AI
+              I&apos;m a solo founder building SoloSuccess AI — a command center of 8 AI
               agents built to remove friction from launching and growing a business.
               From strategy to content and operations, my goal is simple: help you
               ship faster with more clarity.

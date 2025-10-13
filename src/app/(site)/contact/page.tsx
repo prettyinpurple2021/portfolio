@@ -18,7 +18,7 @@ export default function ContactPage() {
           Contact
         </HolographicHeading>
         <HolographicHeading as="h2" variant="script" className="text-xl">
-          Let's collaborate. Reach out via socials or email
+          Let&apos;s collaborate. Reach out via socials or email
         </HolographicHeading>
       </motion.div>
 

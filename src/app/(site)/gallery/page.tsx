@@ -28,7 +28,7 @@ export default async function GalleryPage() {
           Gallery
         </HolographicHeading>
         <HolographicHeading as="h2" variant="script" className="text-xl">
-          Uploads tagged 'portfolio' in Cloudinary appear here automatically
+          Uploads tagged &apos;portfolio&apos; in Cloudinary appear here automatically
         </HolographicHeading>
       </motion.div>
 

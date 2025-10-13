@@ -41,7 +41,7 @@ export default function SocialPage() {
                 { platform: "GitHub", color: "silver", icon: "💻" },
                 { platform: "Instagram", color: "purple", icon: "📸" },
                 { platform: "Bluesky", color: "teal", icon: "🦋" },
-                { platform: "Facebook", color: "purple", icon: "👥" },
+                { platform: "Reddit", color: "purple", icon: "🤖" },
                 { platform: "Pinterest", color: "gold", icon: "📌" },
               ].map((social, index) => (
                 <motion.div
@@ -53,7 +53,7 @@ export default function SocialPage() {
                 >
                   <div className="text-4xl mb-2">{social.icon}</div>
                   <HolographicBadge 
-                    variant={social.color as any}
+                    variant={social.color as "purple" | "teal" | "gold" | "silver"}
                     size="sm"
                     className="text-xs"
                   >
@@ -103,11 +103,11 @@ export default function SocialPage() {
       >
         <GlassCard className="p-8 max-w-2xl mx-auto">
           <HolographicHeading as="h3" variant="script" className="mb-4">
-            Let's Connect!
+            Let&apos;s Connect!
           </HolographicHeading>
           <p className="text-gray-600 mb-6">
             Have questions about AI automation, solo founding, or just want to chat? 
-            I'd love to hear from you!
+            I&apos;d love to hear from you!
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <HolographicBadge variant="purple" glow>
