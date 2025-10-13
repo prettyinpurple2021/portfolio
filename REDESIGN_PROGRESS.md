@@ -80,7 +80,7 @@
 
 ### Social Media Links Needed:
 - [x] **Bluesky** - https://bsky.app/profile/fran.ninja ✅
-- [ ] **Reddit** - URL needed (replaced Facebook)
+- [x] **Reddit** - https://www.reddit.com/user/General-Trouble7753 ✅
 - [x] **Pinterest** - https://www.pinterest.com/SoloSuccess_AI/ ✅
 
 **Current Links (from socials.ts):**
@@ -88,6 +88,9 @@
 - ✅ LinkedIn: https://www.linkedin.com/in/frances-loggins/
 - ✅ GitHub: https://github.com/prettyinpurple2021
 - ✅ Instagram: https://www.instagram.com/solosuccess_ai/
+- ✅ Bluesky: https://bsky.app/profile/fran.ninja
+- ✅ Reddit: https://www.reddit.com/user/General-Trouble7753
+- ✅ Pinterest: https://www.pinterest.com/SoloSuccess_AI/
 
 ---
 
