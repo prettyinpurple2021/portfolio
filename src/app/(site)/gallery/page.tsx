@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import GalleryGrid, { GalleryItem } from "@/components/GalleryGrid";
 import HolographicHeading from "@/components/HolographicHeading";

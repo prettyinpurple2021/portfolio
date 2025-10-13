@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import HolographicHeading from "@/components/HolographicHeading";
 import HolographicBadge from "@/components/HolographicBadge";

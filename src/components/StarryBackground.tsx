@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useState, useEffect } from "react";
 
 type StarryBackgroundProps = {
   children: ReactNode;
@@ -13,41 +13,47 @@ export default function StarryBackground({
   className = "",
   intensity = "subtle" 
 }: StarryBackgroundProps) {
+  const [stars, setStars] = useState<JSX.Element[]>([]);
   const starCount = intensity === "subtle" ? 20 : intensity === "medium" ? 40 : 60;
   
-  const generateStars = () => {
-    const stars = [];
-    for (let i = 0; i < starCount; i++) {
-      const size = Math.random() * 3 + 1;
-      const left = Math.random() * 100;
-      const top = Math.random() * 100;
-      const delay = Math.random() * 3;
-      const duration = Math.random() * 2 + 2;
-      
-      stars.push(
-        <div
-          key={i}
-          className="absolute rounded-full bg-white animate-twinkle"
-          style={{
-            width: `${size}px`,
-            height: `${size}px`,
-            left: `${left}%`,
-            top: `${top}%`,
-            animationDelay: `${delay}s`,
-            animationDuration: `${duration}s`,
-            opacity: Math.random() * 0.8 + 0.2,
-          }}
-        />
-      );
-    }
-    return stars;
-  };
+  useEffect(() => {
+    // Generate stars only on client side to avoid hydration mismatch
+    const generateStars = () => {
+      const starElements = [];
+      for (let i = 0; i < starCount; i++) {
+        const size = Math.random() * 3 + 1;
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        const delay = Math.random() * 3;
+        const duration = Math.random() * 2 + 2;
+        
+        starElements.push(
+          <div
+            key={i}
+            className="absolute rounded-full bg-white animate-twinkle"
+            style={{
+              width: `${size}px`,
+              height: `${size}px`,
+              left: `${left}%`,
+              top: `${top}%`,
+              animationDelay: `${delay}s`,
+              animationDuration: `${duration}s`,
+              opacity: Math.random() * 0.8 + 0.2,
+            }}
+          />
+        );
+      }
+      return starElements;
+    };
+
+    setStars(generateStars());
+  }, [starCount]);
 
   return (
     <div className={`relative overflow-hidden ${className}`}>
       {/* Animated twinkling stars */}
       <div className="absolute inset-0 pointer-events-none">
-        {generateStars()}
+        {stars}
       </div>
       
       {/* Content */}

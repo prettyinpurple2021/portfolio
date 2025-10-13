@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import projects from "@/content/projects.json";
 import HolographicHeading from "@/components/HolographicHeading";

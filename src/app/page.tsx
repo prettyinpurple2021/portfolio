@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
 import GlassCard from "@/components/GlassCard";
