@@ -1,5 +1,4 @@
-import GalleryGrid, { GalleryItem } from "@/components/GalleryGrid";
-import HolographicHeading from "@/components/HolographicHeading";
+import { GalleryItem } from "@/components/GalleryGrid";
 import StarryBackground from "@/components/StarryBackground";
 import { headers } from "next/headers";
 import GalleryContent from "./GalleryContent";
