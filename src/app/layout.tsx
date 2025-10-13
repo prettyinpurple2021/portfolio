@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "SoloSuccess AI — Portfolio",
   description:
     "SoloSuccess AI: a command center for solo founders powered by 8 specialized AI agents.",
-  metadataBase: new URL("https://solosuccess.ai"),
+  metadataBase: new URL("https://solobossai.fun"),
   openGraph: {
     title: "SoloSuccess AI — Portfolio",
     description:

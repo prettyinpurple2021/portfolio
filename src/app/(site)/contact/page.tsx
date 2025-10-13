@@ -12,8 +12,8 @@ export default function ContactPage() {
       <GlassCard>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <SocialLinks />
-          <a className="btn-primary" href="mailto:hello@solosuccess.ai">
-            hello@solosuccess.ai
+          <a className="btn-primary" href="mailto:hello@solobossai.fun">
+            hello@solobossai.fun
           </a>
         </div>
       </GlassCard>
