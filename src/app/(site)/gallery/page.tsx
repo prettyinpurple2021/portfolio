@@ -3,7 +3,7 @@ import SectionHeader from "@/components/SectionHeader";
 import { headers } from "next/headers";
 
 async function getGallery(): Promise<GalleryItem[]> {
-  const h = await headers();
+  const h = headers();
   const host = h.get("host");
   const protocol = process.env.VERCEL ? "https" : "http";
   const base = `${protocol}://${host}`;
@@ -24,5 +24,3 @@ export default async function GalleryPage() {
     </div>
   );
 }
-
-
