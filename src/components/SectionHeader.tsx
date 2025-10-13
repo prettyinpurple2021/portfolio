@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 
 export default function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }) {
