@@ -23,27 +23,65 @@ export default function BlogFeed() {
     const fetchBlogPosts = async () => {
       try {
         setLoading(true);
-        // Fetch RSS feed from Blogger
-        const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://www.solobossai.blog/feeds/posts/default?alt=rss')}`);
-        const data = await response.json();
+        // Try multiple RSS proxy services for better reliability
+        const rssUrl = 'https://www.solobossai.blog/feeds/posts/default?alt=rss';
         
-        if (data.contents) {
-          // Parse RSS XML
-          const parser = new DOMParser();
-          const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+        // Try allorigins first, then cors-anywhere as fallback
+        const proxies = [
+          `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`,
+          `https://cors-anywhere.herokuapp.com/${rssUrl}`
+        ];
+        
+        let data = null;
+        let lastError = null;
+        
+        for (const proxyUrl of proxies) {
+          try {
+            const response = await fetch(proxyUrl);
+            if (response.ok) {
+              data = await response.json();
+              break;
+            }
+          } catch (err) {
+            lastError = err;
+            continue;
+          }
+        }
+        
+        if (!data) {
+          throw lastError || new Error("All proxy services failed");
+        }
+        
+        // Handle different response formats
+        const xmlContent = data.contents || data;
+        if (typeof xmlContent !== 'string') {
+          throw new Error("Invalid RSS content");
+        }
+        
+        // Parse RSS XML
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlContent, "text/xml");
+        
+        // Check for parsing errors
+        const parseError = xmlDoc.querySelector("parsererror");
+        if (parseError) {
+          throw new Error("Failed to parse RSS feed");
+        }
+        
+        const items = xmlDoc.querySelectorAll("item");
+        const blogPosts: BlogPost[] = [];
+        
+        items.forEach((item, index) => {
+          if (index >= 6) return; // Limit to 6 posts
           
-          const items = xmlDoc.querySelectorAll("item");
-          const blogPosts: BlogPost[] = [];
+          const title = item.querySelector("title")?.textContent || "";
+          const link = item.querySelector("link")?.textContent || "";
+          const pubDate = item.querySelector("pubDate")?.textContent || "";
+          const description = item.querySelector("description")?.textContent || "";
+          const content = item.querySelector("content\\:encoded, encoded")?.textContent || "";
           
-          items.forEach((item, index) => {
-            if (index >= 6) return; // Limit to 6 posts
-            
-            const title = item.querySelector("title")?.textContent || "";
-            const link = item.querySelector("link")?.textContent || "";
-            const pubDate = item.querySelector("pubDate")?.textContent || "";
-            const description = item.querySelector("description")?.textContent || "";
-            const content = item.querySelector("content\\:encoded, encoded")?.textContent || "";
-            
+          // Only add if we have essential data
+          if (title && link) {
             blogPosts.push({
               title,
               link,
@@ -51,13 +89,13 @@ export default function BlogFeed() {
               description,
               content
             });
-          });
-          
-          setPosts(blogPosts);
-        }
+          }
+        });
+        
+        setPosts(blogPosts);
       } catch (err) {
         console.error("Error fetching blog posts:", err);
-        setError("Failed to load blog posts");
+        setError("Failed to load blog posts. Please try again later.");
       } finally {
         setLoading(false);
       }

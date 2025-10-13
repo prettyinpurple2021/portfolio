@@ -161,3 +161,55 @@ body {
 .container-section {
   @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
 }
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .text-3d-holographic {
+    font-size: 1.875rem; /* text-3xl */
+    line-height: 2.25rem;
+  }
+  
+  .text-script-shimmer {
+    font-size: 1.25rem; /* text-xl */
+  }
+  
+  .glass-frosted {
+    backdrop-filter: blur(12px);
+  }
+  
+  /* Reduce star animation intensity on mobile */
+  body {
+    background-size: 60px 60px, 80px 80px, 50px 50px, 70px 70px, 55px 55px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .text-3d-holographic {
+    font-size: 2.5rem; /* text-4xl */
+  }
+  
+  .text-script-shimmer {
+    font-size: 1.5rem; /* text-2xl */
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .text-3d-holographic,
+  .text-script-shimmer {
+    animation: none;
+  }
+  
+  .animate-twinkle,
+  .animate-shimmer,
+  .animate-float {
+    animation: none;
+  }
+  
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
