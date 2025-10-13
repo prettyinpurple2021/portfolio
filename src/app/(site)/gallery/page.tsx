@@ -3,7 +3,11 @@ import SectionHeader from "@/components/SectionHeader";
 import { headers } from "next/headers";
 
 async function getGallery(): Promise<GalleryItem[]> {
+<<<<<<< Current (Your changes)
   const h = headers();
+=======
+  const h = await headers();
+>>>>>>> Incoming (Background Agent changes)
   const host = h.get("host");
   const protocol = process.env.VERCEL ? "https" : "http";
   const base = `${protocol}://${host}`;

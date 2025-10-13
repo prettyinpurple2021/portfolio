@@ -17,7 +17,7 @@ export async function GET() {
       .max_results(50)
       .execute();
 
-    const items = (res.resources ?? []).map((r: any) => ({
+    const items = (res.resources ?? []).map((r: { asset_id: string; public_id: string; secure_url: string; width: number; height: number; format: string }) => ({
       id: r.asset_id,
       public_id: r.public_id,
       secure_url: r.secure_url,
@@ -26,7 +26,7 @@ export async function GET() {
       format: r.format,
     }));
     return NextResponse.json(items);
-  } catch (e) {
+  } catch {
     return NextResponse.json([], { status: 200 });
   }
 }
