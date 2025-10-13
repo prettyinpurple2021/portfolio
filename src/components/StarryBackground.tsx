@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState, useEffect } from "react";
+import { ReactNode, useState, useEffect, ReactElement } from "react";
 
 type StarryBackgroundProps = {
   children: ReactNode;
@@ -13,7 +13,7 @@ export default function StarryBackground({
   className = "",
   intensity = "subtle" 
 }: StarryBackgroundProps) {
-  const [stars, setStars] = useState<JSX.Element[]>([]);
+  const [stars, setStars] = useState<ReactElement[]>([]);
   const [isClient, setIsClient] = useState(false);
   const starCount = intensity === "subtle" ? 20 : intensity === "medium" ? 40 : 60;
   
