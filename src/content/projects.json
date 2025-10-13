@@ -1,0 +1,16 @@
+[
+  {
+    "title": "SoloSuccess AI",
+    "summary": "A command-center of 8 AI agents helping solo founders launch faster across strategy, branding, content, ops, and growth.",
+    "tags": ["Next.js", "OpenAI", "Agents", "Stripe"],
+    "href": "#"
+  },
+  {
+    "title": "Portfolio Website",
+    "summary": "Glassmorphic, brand-aligned portfolio with Cloudinary gallery and admin uploads.",
+    "tags": ["Next.js", "Tailwind", "Cloudinary"],
+    "href": "#"
+  }
+]
+
+
