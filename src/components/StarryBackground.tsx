@@ -14,9 +14,13 @@ export default function StarryBackground({
   intensity = "subtle" 
 }: StarryBackgroundProps) {
   const [stars, setStars] = useState<JSX.Element[]>([]);
+  const [isClient, setIsClient] = useState(false);
   const starCount = intensity === "subtle" ? 20 : intensity === "medium" ? 40 : 60;
   
   useEffect(() => {
+    // Set client flag to true
+    setIsClient(true);
+    
     // Generate stars only on client side to avoid hydration mismatch
     const generateStars = () => {
       const starElements = [];
@@ -51,10 +55,12 @@ export default function StarryBackground({
 
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      {/* Animated twinkling stars */}
-      <div className="absolute inset-0 pointer-events-none">
-        {stars}
-      </div>
+      {/* Animated twinkling stars - only render on client */}
+      {isClient && (
+        <div className="absolute inset-0 pointer-events-none">
+          {stars}
+        </div>
+      )}
       
       {/* Content */}
       <div className="relative z-10">
