@@ -1,72 +1,61 @@
 "use client";
-
-import { motion } from "framer-motion";
-import HolographicHeading from "@/components/HolographicHeading";
-import HolographicBadge from "@/components/HolographicBadge";
-import GlassCard from "@/components/GlassCard";
-import SocialLinks from "@/components/SocialLinks";
-import StarryBackground from "@/components/StarryBackground";
+import { useState } from 'react';
+import styles from './page.module.css';
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log(formData);
+  };
+
   return (
-    <StarryBackground intensity="subtle" className="py-10">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-12"
-      >
-        <HolographicHeading as="h1" variant="3d" className="mb-4">
-          Contact
-        </HolographicHeading>
-        <HolographicHeading as="h2" variant="script" className="text-xl">
-          Let&apos;s collaborate. Reach out via socials or email
-        </HolographicHeading>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        <GlassCard className="p-8 hover:shadow-holographic transition-all duration-300">
-          <div className="flex flex-col items-center gap-8">
-            <div className="text-center">
-              <h3 className="text-lg font-semibold mb-4 text-gray-800">Connect With Me</h3>
-              <SocialLinks className="justify-center" />
-            </div>
-            
-            <div className="text-center">
-              <HolographicBadge variant="purple" size="lg" className="mb-4">
-                📧 Email Me
-              </HolographicBadge>
-              <a 
-                className="btn-primary text-lg px-8 py-4" 
-                href="mailto:hello@solobossai.fun"
-              >
-                hello@solobossai.fun
-              </a>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-3">
-              <HolographicBadge variant="purple" glow>
-                AI Consulting
-              </HolographicBadge>
-              <HolographicBadge variant="teal" glow>
-                Product Strategy
-              </HolographicBadge>
-              <HolographicBadge variant="gold" glow>
-                Automation
-              </HolographicBadge>
-              <HolographicBadge variant="silver" glow>
-                Solo Founding
-              </HolographicBadge>
-            </div>
+    <div className="relative min-h-screen w-full overflow-hidden">
+      <div className="absolute inset-0 -z-10" style={{backgroundImage: 'linear-gradient(135deg, #f8a5c2, #b3e5fc, #d8b4fe, #a9c9ff)', animation: 'background-pan 15s ease-in-out infinite', backgroundSize: '400% 400%'}}>
+        <div className={styles['glitter-overlay']}></div>
+      </div>
+      <main className="flex flex-1 items-center justify-center p-4 sm:p-8 md:p-12">
+        <div className="w-full max-w-2xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className={`text-5xl md:text-6xl font-black tracking-tighter ${styles['gradient-text']}`}>Get In Touch</h2>
+            <p className="mt-4 text-lg text-background-dark/80 dark:text-background-light/80 max-w-2xl mx-auto">
+              Have a question or a magical project in mind? Drop us a line, we&apos;d love to hear from you.
+            </p>
           </div>
-        </GlassCard>
-      </motion.div>
-    </StarryBackground>
+          <div className="p-8 sm:p-10 rounded-xl bg-white/20 dark:bg-black/20 backdrop-blur-2xl shadow-2xl border border-white/30 dark:border-black/30">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-background-dark/90 dark:text-background-light/90 mb-2" htmlFor="name">Full Name</label>
+                <input className={`${styles['form-input']} block w-full rounded-md border-0 py-2.5 px-4 shadow-sm ring-1 ring-inset ring-transparent focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6`} id="name" name="name" placeholder="Luna Lovegood" type="text" value={formData.name} onChange={handleChange} />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-background-dark/90 dark:text-background-light/90 mb-2" htmlFor="email">Email Address</label>
+                <input className={`${styles['form-input']} block w-full rounded-md border-0 py-2.5 px-4 shadow-sm ring-1 ring-inset ring-transparent focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6`} id="email" name="email" placeholder="luna.lovegood@hogwarts.ac.uk" type="email" value={formData.email} onChange={handleChange} />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-background-dark/90 dark:text-background-light/90 mb-2" htmlFor="message">Message</label>
+                <textarea className={`${styles['form-input']} block w-full rounded-md border-0 py-2.5 px-4 shadow-sm ring-1 ring-inset ring-transparent focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6`} id="message" name="message" placeholder="Tell us about your enchanted ideas..." rows={5} value={formData.message} onChange={handleChange}></textarea>
+              </div>
+              <div>
+                <button className={`${styles['holographic-button']} w-full flex justify-center rounded-full px-8 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-primary/50`} type="submit">
+                  Send Your Spell
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }
-
-

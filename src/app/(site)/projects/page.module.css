@@ -1,0 +1,117 @@
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.5) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5) rotate(180deg);
+    }
+}
+.sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(173,216,230,1) 50%, rgba(221,160,221,1) 100%);
+    border-radius: 50%;
+    animation: sparkle 3s infinite;
+    filter: blur(1px);
+}
+.gradient-text {
+    background: linear-gradient(135deg, #A020F0, #00FFFF, #FF00FF, #00FFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    background-size: 300% 300%;
+    animation: gradient-animation 4s ease-in-out infinite;
+}
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.holographic-button {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%), linear-gradient(90deg, #A020F0, #00FFFF, #A020F0);
+    background-size: 300% 300%;
+    transition: background-position 0.5s ease;
+    animation: holographic-bg 4s linear infinite;
+}
+@keyframes holographic-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.holographic-button:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.6) 100%);
+    transform: rotate(45deg);
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+.holographic-button:hover:before {
+    opacity: 1;
+    animation: shimmer 1.5s infinite linear;
+}
+@keyframes shimmer {
+    0% {
+        transform: translateX(-150%) translateY(-150%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(150%) translateY(150%) rotate(45deg);
+    }
+}
+.holographic-border-hover {
+    position: relative;
+}
+.holographic-border-hover::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 1.25rem;
+    padding: 3px;
+    background: linear-gradient(135deg, #A020F0, #00FFFF, #E0B0FF, #A020F0, #00FFFF);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    background-size: 400% 400%;
+    animation: holo-border-anim 3s linear infinite;
+}
+.holographic-border-hover:hover::before {
+    opacity: 1;
+}
+@keyframes holo-border-anim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 200% 50%; }
+    100% { background-position: 0% 50%; }
+}
+@keyframes background-pan {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.nav-link {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.5), 0 0 15px rgba(160, 32, 240, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+.nav-link:hover {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 15px rgba(0, 255, 255, 0.8), 0 0 25px rgba(160, 32, 240, 0.8);
+    transform: scale(1.1);
+}
+.holo-bg-animated {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuOCIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMSIvPjwvc3ZnPg=='), linear-gradient(135deg, #ffc0cb, #b0e0e6, #dda0dd, #add8e6);
+    background-size: auto, 400% 400%;
+    animation: background-pan 10s ease-in-out infinite;
+}
