@@ -9,8 +9,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        "primary": "#7f13ec",
+        "background-light": "#f7f6f8",
+        "background-dark": "#191022",
         'brand-pink': 'var(--color-brand-pink)',
         'brand-pink-2': 'var(--color-brand-pink-2)', 
         'brand-purple': 'var(--color-brand-purple)',
@@ -25,6 +26,7 @@ module.exports = {
         orbitron: ['var(--font-orbitron)', ...defaultTheme.fontFamily.sans],
         playfair: ['var(--font-playfair)', ...defaultTheme.fontFamily.serif],
         montserrat: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],
+        "display": ["var(--font-spline-sans)", ...defaultTheme.fontFamily.sans]
       },
       boxShadow: {
         'elevated': 'var(--shadow-elevated)',
@@ -39,8 +41,13 @@ module.exports = {
       },
       animation: {
         'twinkle': 'twinkle 3s ease-in-out infinite',
-        'shimmer': 'shimmer 2s linear infinite',
+        'shimmer': 'shimmer 1.5s infinite linear',
         'float': 'float 6s ease-in-out infinite',
+        'sparkle': 'sparkle 3s infinite',
+        'gradient-animation': 'gradient-animation 4s ease-in-out infinite',
+        'holographic-bg': 'holographic-bg 4s linear infinite',
+        'holo-border-anim': 'holo-border-anim 3s linear infinite',
+        'background-pan': 'background-pan 10s ease-in-out infinite',
       },
       keyframes: {
         twinkle: {
@@ -48,16 +55,48 @@ module.exports = {
           '50%': { opacity: '1', transform: 'scale(1.2)' },
         },
         shimmer: {
-          '0%': { backgroundPosition: '-200% 0' },
-          '100%': { backgroundPosition: '200% 0' },
+          '0%': { transform: 'translateX(-150%) translateY(-150%) rotate(45deg)' },
+          '100%': { transform: 'translateX(150%) translateY(150%) rotate(45deg)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
         },
+        sparkle: {
+          '0%, 100%': {
+              opacity: '0.2',
+              transform: 'scale(0.5) rotate(0deg)',
+          },
+          '50%': {
+              opacity: '1',
+              transform: 'scale(1.5) rotate(180deg)',
+          },
+        },
+        'gradient-animation': {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' },
+        },
+        'holographic-bg': {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' },
+        },
+        'holo-border-anim': {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '200% 50%' },
+          '100%': { 'background-position': '0% 50%' },
+        },
+        'background-pan': {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' },
+        },
       },
       borderRadius: {
         'pill': '9999px',
+        "lg": "1rem",
+        "xl": "1.5rem",
       },
       container: {
         center: true,

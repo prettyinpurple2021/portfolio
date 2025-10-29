@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Orbitron, Playfair_Display, Montserrat } from "next/font/google";
+import { Geist, Geist_Mono, Orbitron, Playfair_Display, Montserrat, Spline_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -34,6 +34,12 @@ const montserrat = Montserrat({
   weight: ["300", "400", "500", "600"],
 });
 
+const splineSans = Spline_Sans({
+  variable: "--font-spline-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
 export const metadata: Metadata = {
   title: "SoloSuccess AI — Portfolio",
   description:
@@ -61,7 +67,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} ${playfair.variable} ${montserrat.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} ${playfair.variable} ${montserrat.variable} ${splineSans.variable} antialiased`}>
         <Navbar />
         <main className="container-section mt-8">{children}</main>
         <Footer />

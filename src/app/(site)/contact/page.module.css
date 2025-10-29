@@ -1,0 +1,149 @@
+@keyframes sparkle {
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.5) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5) rotate(180deg);
+    }
+}
+.sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(173, 216, 230, 1) 50%, rgba(221, 160, 221, 1) 100%);
+    border-radius: 50%;
+    animation: sparkle 3s infinite;
+    filter: blur(1px);
+}
+.glitter-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuNSI+IDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InkiIGZyb209Ii0xIiB0bz0iMTAwIiBkdXI9IjVzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgLz4gPC9yZWN0Pjwvc3ZnPg=='), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjMiIHg9IjUwIiB5PSI1MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC4zIj4gPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ieCIgZnJvbT0iLTEwMCIgdG89IjIwMCIgZHVyPSIxMHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAvPiA8L3JlY3Q+IDxyZWN0IHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHg9IjEwMCIgeT0iMTAwIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjQiPiA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJ5IiBmcm9tPSItMTAwIiB0bz0iMjAwIiBkdXI9IjhzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgLz4gPC9yZWN0PiA8L3N2Zz4=');
+    animation: glitter-fall 15s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+@keyframes glitter-fall {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+    100% {
+        background-position: 0 1000px, 0 1000px;
+    }
+}
+.gradient-text {
+    background: linear-gradient(135deg, #A020F0, #00FFFF, #FF00FF, #00FFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    background-size: 300% 300%;
+    animation: gradient-animation 4s ease-in-out infinite;
+}
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.holographic-button {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%), linear-gradient(90deg, #A020F0, #00FFFF, #A020F0);
+    background-size: 300% 300%;
+    transition: background-position 0.5s ease;
+    animation: holographic-bg 4s linear infinite;
+}
+@keyframes holographic-bg {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.holographic-button:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.6) 100%);
+    transform: rotate(45deg);
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+.holographic-button:hover:before {
+    opacity: 1;
+    animation: shimmer 1.5s infinite linear;
+}
+@keyframes shimmer {
+    0% {
+        transform: translateX(-150%) translateY(-150%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(150%) translateY(150%) rotate(45deg);
+    }
+}
+@keyframes background-pan {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+.nav-link {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.5), 0 0 15px rgba(160, 32, 240, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+.nav-link:hover {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 15px rgba(0, 255, 255, 0.8), 0 0 25px rgba(160, 32, 240, 0.8);
+    transform: scale(1.1);
+}
+.form-input {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+.form-input:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(0, 255, 255, 0.7);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+.dark .form-input {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+.dark .form-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+.dark .form-input:focus {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(160, 32, 240, 0.7);
+    box-shadow: 0 0 15px rgba(160, 32, 240, 0.5);
+}
