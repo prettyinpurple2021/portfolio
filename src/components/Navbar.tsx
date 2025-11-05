@@ -48,7 +48,6 @@ export default function Navbar() {
             <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
           </svg>
         </button>
-        <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-white/50" style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuD7viXYEDXdrWzytr190b-Y3HstGYpjPokCaSwROSdwwWMDn3Py8Xp8T3JAXCOje0PE6l_SCkGpmqWtf8hVFwTcn9qXWbfHzNXsfLIhOKWQTHg1vH9laXu2zjtBYG4brAo_83Q4jOMJWVeQA4QqGejvbzKyKdNzYCdfx7Uw5lO_Jk7mqFdmN-Uw9QGRiGD9gQwXHvNMt3kduFPQ1jY2WFMCAy9Rk4TmB-k8lZZTCX1raERJml7MrWMTfajL7SU472dLFCV4dRh_")'}}></div>
       </div>
     </header>
   );
