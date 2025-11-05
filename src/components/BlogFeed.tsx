@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import sanitizeHtml from "sanitize-html";
 import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
 import HolographicHeading from "./HolographicHeading";
@@ -177,7 +178,7 @@ export default function BlogFeed() {
               </h3>
               
               <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                {truncateText(post.description.replace(/<[^>]*>/g, ''))}
+                {truncateText(sanitizeHtml(post.description, { allowedTags: [] }))}
               </p>
               
               <div className="flex items-center justify-between">
